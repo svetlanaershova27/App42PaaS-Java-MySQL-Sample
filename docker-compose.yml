@@ -1,14 +1,15 @@
 version: '3'
 services:
   builder:
-    container_name: maven
+    container_name: maven2
     build:
       context: ./
       dockerfile: Dockerfile
     ports:
-      - "8081:8080"
+      - "8082:8080"
 
   mysql:
+    container_name: db
     image: mysql
     ports:
       - "9934:5432"
@@ -21,12 +22,12 @@ services:
 
 
   runner:
-    container_name: tomcat
+    container_name: tomcat2
     build:
       context: ./
       dockerfile: Dockerfile
     ports:
-      - "8090:8080"
+      - "8091:8080"
     links:
       - mysql
     depends_on:
