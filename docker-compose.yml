@@ -20,13 +20,13 @@ services:
     volumes:
       - /data:/var/lib/mysql/data
 
-    runner:
-      container_name: tomcat
-      build:
-        context: ./
-        dockerfile: Dockerfile
-      ports:
-        - "8031:8080"
+  runner:
+    container_name: tomcat
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - "8031:8080"
 
 
 
