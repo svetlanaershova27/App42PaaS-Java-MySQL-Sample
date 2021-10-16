@@ -6,6 +6,15 @@ services:
       context: ./
       dockerfile: Dockerfile
 
+
+  runner:
+    container_name: tomcat5
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - "8095:8080"
+
   mysql:
     container_name: db
     image: mysql
@@ -16,16 +25,7 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=pass
     volumes:
-      - ./mysql:/vat/lib/mysql
-
-
-  runner:
-    container_name: tomcat5
-    build:
-      context: ./
-      dockerfile: Dockerfile
-    ports:
-      - "8093:8080"
+      - ./mysql:/var/lib/mysql
 
 
 
