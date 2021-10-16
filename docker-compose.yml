@@ -6,7 +6,7 @@ services:
       context: ./
       dockerfile: Dockerfile
     ports:
-      - "9007:8080"
+      - "8081:8080"
 
   mysql:
     image: mysql
@@ -16,6 +16,8 @@ services:
       - "5432"
     environment:
       - MYSQL_ROOT_PASSWORD=pass
+    volumes:
+      - ./mysql:/vat/lib/mysql
 
 
   runner:
@@ -24,7 +26,11 @@ services:
       context: ./
       dockerfile: Dockerfile
     ports:
-      - "8044:8080"
+      - "8080:8080"
+    links:
+      - mysql
+    depends_on:
+      - "mysql"
 
 
 
