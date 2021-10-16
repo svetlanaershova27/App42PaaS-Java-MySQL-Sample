@@ -6,7 +6,7 @@ services:
       context: ./
       dockerfile: Dockerfile
     ports:
-      - "9005:8080"
+      - "9006:8080"
 
   mysql:
     image: mysql
@@ -24,7 +24,7 @@ services:
       context: ./
       dockerfile: Dockerfile
     ports:
-      - "8039:8080"
+      - "8040:8080"
 
 
 
