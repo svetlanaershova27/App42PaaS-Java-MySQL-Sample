@@ -30,8 +30,7 @@ services:
       - "8091:8080"
     links:
       - mysql
-    depends_on:
-      - "mysql"
+
 
 
 
