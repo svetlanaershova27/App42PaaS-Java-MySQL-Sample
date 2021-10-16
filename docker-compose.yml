@@ -1,12 +1,10 @@
 version: '3'
 services:
   builder:
-    container_name: maven3
+    container_name: maven5
     build:
       context: ./
       dockerfile: Dockerfile
-    links:
-      - runner
 
   mysql:
     container_name: db
@@ -22,12 +20,12 @@ services:
 
 
   runner:
-    container_name: tomcat3
+    container_name: tomcat5
     build:
       context: ./
       dockerfile: Dockerfile
     ports:
-      - "8092:8080"
+      - "8093:8080"
 
 
 
