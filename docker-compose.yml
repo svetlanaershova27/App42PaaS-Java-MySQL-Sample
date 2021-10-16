@@ -16,9 +16,8 @@ services:
       - "5432"
     environment:
       - MYSQL_ROOT_PASSWORD=pass
-    restart: always
     volumes:
-      - /data:/var/lib/mysql/data
+      - /data:/var/lib/mysql
 
   runner:
     container_name: tomcat
