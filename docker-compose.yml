@@ -5,8 +5,8 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile
-  ports:
-    - "8096:8080"
+    ports:
+      - "8096:8080"
 
 
   runner:
