@@ -1,16 +1,19 @@
 version: '3'
 services:
   builder:
-    container_name: maven5
+    container_name: maven6
     build:
       context: ./
       dockerfile: Dockerfile
+    networks:
+      - frontend
+      - backend
     depends_on:
       - mysql
 
 
   runner:
-    container_name: tomcat5
+    container_name: tomcat6
     build:
       context: ./
       dockerfile: Dockerfile
@@ -18,10 +21,10 @@ services:
       - builder
       - mysql
     ports:
-      - "8095:8085"
+      - "8080:8080"
 
   mysql:
-    container_name: db
+    container_name: db2
     image: mysql
     ports:
       - "9935:5432"
@@ -32,6 +35,16 @@ services:
     volumes:
       - ./mysql:/var/lib/mysql
     restart: on-failure
+    networks:
+      - backend
+
+networks:
+  frontend:
+    # Use a custom driver
+    driver: weave
+  backend:
+      # Use a custom driver which takes special options
+    driver: weave
 
 
 
