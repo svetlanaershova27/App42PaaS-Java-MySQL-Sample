@@ -5,9 +5,6 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile
-    networks:
-      - frontend
-      - backend
     depends_on:
       - mysql
 
@@ -35,16 +32,6 @@ services:
     volumes:
       - ./mysql:/var/lib/mysql
     restart: on-failure
-    networks:
-      - backend
-
-networks:
-  frontend:
-    # Use a custom driver
-    driver: weave
-  backend:
-      # Use a custom driver which takes special options
-    driver: weave
 
 
 
