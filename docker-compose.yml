@@ -5,8 +5,8 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile
-    ports:
-      - "8096:8080"
+    depends_on:
+      - mysql
 
 
   runner:
@@ -14,8 +14,11 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile
+    depends_on:
+      - builder
+      - mysql
     ports:
-      - "8095:8080"
+      - "8095:8085"
 
   mysql:
     container_name: db
@@ -28,6 +31,7 @@ services:
       - MYSQL_ROOT_PASSWORD=pass
     volumes:
       - ./mysql:/var/lib/mysql
+    restart: on-failure
 
 
 
